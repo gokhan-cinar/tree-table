@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "adphorus-challege": {
+    "challege": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/adphorus-challege",
+            "outputPath": "dist/challege",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "adphorus-challege:build"
+            "browserTarget": "challege:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "adphorus-challege:build:production"
+              "browserTarget": "challege:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "adphorus-challege:build"
+            "browserTarget": "challege:build"
           }
         },
         "test": {
@@ -116,16 +116,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "adphorus-challege:serve"
+            "devServerTarget": "challege:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "adphorus-challege:serve:production"
+              "devServerTarget": "challege:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "adphorus-challege"
+  "defaultProject": "challege"
 }

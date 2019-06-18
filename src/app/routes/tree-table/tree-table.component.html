@@ -7,30 +7,29 @@
         <th>Name</th>
         <th>Phone</th>
         <th>City</th>
-        <th class="center-text">Delete</th> 
+        <th class="center-text">Delete</th>
       </tr>
     </thead>
-    <tbody>
-      <ng-template ngFor let-data [ngForOf]="nzTable.data" | async>
-        <tr>
-          <td [nzShowExpand]="!!data.parentID" [nzShowExpand]="!!item.parentID" [(nzExpand)]="mapOfExpandData[data.ID]"></td>
-          <td>{{data.ID}}</td>
-          <td>{{data.Name}}</td>
-          <td>{{data.Phone}}</td>
-          <td>{{data.City}}</td>
-          <td class="center-text"><a nz-popconfirm nzTitle="Sure to delete?" (nzOnConfirm)="deleteRow(data.ID)">Delete</a>
-          </td>
-        </tr>
-        <tr [nzExpand]="mapOfExpandData[data.ID]">
-          <td></td>
-          <td>{{data.parentID}}</td>
-          <td>{{data.City}}</td>
-          <td>{{data.Phone}}</td> 
-          <td>{{data.Name}}</td> 
-          <td></td>
-        </tr>
-      </ng-template>
+    <tbody> 
+      <ng-container *ngFor="let data of nzTable.data">
+        <ng-container *ngFor="let item of mapOfExpandedData[data.ID]">
+          <tr *ngIf="(item.parent && item.parent.expand) || !item.parent">
+            <td
+                    [nzIndentSize]="item.level * 20"
+                    [nzShowExpand]="!!item.children"
+                    [(nzExpand)]="item.expand"
+                    (nzExpandChange)="collapse(mapOfExpandedData[data.parentID], item, $event)"
+            >
+            </td>
+            <td>{{ item.ID }}</td>
+            <td>{{ item.Name }}</td>
+            <td>{{ item.Phone }}</td>
+            <td>{{ item.City }}</td>
+            <td class="center-text"><a nz-popconfirm nzTitle="Sure to delete?" (nzOnConfirm)="deleteRow(data.ID)">Delete</a>
+          </tr>
+        </ng-container>
+      </ng-container>
     </tbody>
-  </nz-table>   
+  </nz-table>
 </main>
 
