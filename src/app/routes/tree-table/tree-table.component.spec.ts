@@ -1,19 +1,20 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { DataJsonService } from './data-json.service';
 
-describe('DataJsonService', () => {
+import { TreeTableComponent } from './tree-table.component';
+
+describe('TreeTableComponent', () => {
   let httpTestingController: HttpTestingController;
-  let service: DataJsonService;
+  let service: TreeTableComponent;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DataJsonService],
+      providers: [TreeTableComponent],
       imports: [HttpClientTestingModule]
     });
 
     httpTestingController = TestBed.get(HttpTestingController);
-    service = TestBed.get(DataJsonService);
+    service = TestBed.get(TreeTableComponent);
   });
 
   afterEach(() => {

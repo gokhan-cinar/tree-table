@@ -1,0 +1,36 @@
+<main>
+  <nz-table #nzTable [nzPageSize]="10" [nzData]="treeTable">
+    <thead>
+      <tr>
+        <th nzShowExpand></th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>City</th>
+        <th class="center-text">Delete</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <ng-template ngFor let-data [ngForOf]="nzTable.data" | async>
+        <tr>
+          <td [nzShowExpand]="!!data.parentID" [nzShowExpand]="!!item.parentID" [(nzExpand)]="mapOfExpandData[data.ID]"></td>
+          <td>{{data.ID}}</td>
+          <td>{{data.Name}}</td>
+          <td>{{data.Phone}}</td>
+          <td>{{data.City}}</td>
+          <td class="center-text"><a nz-popconfirm nzTitle="Sure to delete?" (nzOnConfirm)="deleteRow(data.ID)">Delete</a>
+          </td>
+        </tr>
+        <tr [nzExpand]="mapOfExpandData[data.ID]">
+          <td></td>
+          <td>{{data.parentID}}</td>
+          <td>{{data.City}}</td>
+          <td>{{data.Phone}}</td> 
+          <td>{{data.Name}}</td> 
+          <td></td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </nz-table>   
+</main>
+

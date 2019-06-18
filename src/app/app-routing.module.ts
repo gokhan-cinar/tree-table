@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TreeTableComponent } from './tree-table/tree-table.component';
+import { TreeTableComponent } from './routes/tree-table/tree-table.component';
+import { TestTableComponent } from './routes/test-table/test-table.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: TreeTableComponent },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+  { path: 'test-table', component: TestTableComponent }
 ];
 
 @NgModule({
