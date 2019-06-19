@@ -14,6 +14,12 @@ module.exports = {
             {
                 test: /\.(html|css)$/,
                 use: 'raw-loader'
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'sass-loader' // compiles Sass to CSS, using Node Sass by default
+                ]
             }
         ]
     },

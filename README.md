@@ -6,3 +6,7 @@
 ## Running unit tests project
 
 Testing: `ng test`
+
+## Webpack tests
+
+Testing: `npm start`
